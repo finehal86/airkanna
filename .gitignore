@@ -25,3 +25,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.log
+
+# Screenshots / temp files
+*.png
+*.jpg
+*.jpeg
+
+# npm (not needed for static LP)
+package.json
+package-lock.json
