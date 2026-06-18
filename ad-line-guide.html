@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>広告出稿・LINE公式アカウント運用ガイド</title>
+<style>
+  body { font-family: "Yu Gothic", "Hiragino Sans", sans-serif; line-height: 1.8; color: #222; margin: 40px; }
+  h1 { font-size: 22px; border-bottom: 3px solid #06C755; padding-bottom: 8px; }
+  h2 { font-size: 18px; color: #06C755; margin-top: 32px; border-left: 6px solid #06C755; padding-left: 10px; }
+  h3 { font-size: 15px; margin-top: 20px; }
+  p, li { font-size: 13.5px; }
+  ol, ul { margin-left: 10px; }
+  .note { background: #fff7e6; border: 1px solid #ffd166; padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+  .footer { margin-top: 40px; font-size: 11px; color: #888; }
+</style>
+</head>
+<body>
+
+<h1>エアー鉋LP 広告出稿・LINE公式アカウント運用ガイド</h1>
+<p>作成日：2026-06-18</p>
+
+<h2>1. Instagram / Facebook への広告アップロード方法</h2>
+<p>Instagram・Facebookの広告は両方とも「Meta広告」として同じ管理画面（Meta広告マネージャー）から出します。</p>
+
+<h3>事前準備</h3>
+<ol>
+  <li>Facebookページを作成（蓮海工業 or サービス名のページ）</li>
+  <li>Instagramビジネスアカウントを作成し、Facebookページと連携</li>
+  <li><code>business.facebook.com</code>（Meta Business Suite）でビジネスアカウントを作成</li>
+  <li>支払い方法（クレジットカード）を登録</li>
+</ol>
+
+<h3>広告作成の流れ</h3>
+<ol>
+  <li>広告マネージャーで「キャンペーンを作成」</li>
+  <li>目的：「リード」または「トラフィック」を選択（LINE登録がゴールなので「リード」がおすすめ）</li>
+  <li>配置：Instagramフィード／リール／ストーリーズ＋Facebookフィードにチェック</li>
+  <li>ターゲティング：地域（全国 or エリア絞り）、興味関心（神社仏閣・古民家・ログハウス・リフォームなど）</li>
+  <li>クリエイティブ：LP内のスクショ（<code>ss_01_hero.png</code>～<code>ss_06_faq.png</code>）や<code>v2_hero.png</code>を画像広告として使用。コピーはLP内の「削らずに蘇らせる」「スマホ写真1枚で無料診断」をそのまま使うと一貫性が出る</li>
+  <li>リンク先：LPを公開したURL</li>
+  <li>予算・期間を設定 → 審査（数時間〜1日） → 配信開始</li>
+</ol>
+
+<div class="note">
+<strong>技術的に重要な抜け漏れ：</strong><br>
+現在のindex.htmlにはMeta広告の効果測定用の「Metaピクセル」が入っていない。これがないと「広告を見て何人がLINE登録ボタンを押したか」が計測できず、広告の最適化ができない。広告を出す前に、ピクセルタグの埋め込みとLINEボタンクリックのイベント計測コードを追加することを推奨。
+</div>
+
+<h2>2. 会社LINEの作り方</h2>
+<p>LPの「LINEで相談」ボタン（<code>https://lin.ee/XXXXXXX</code>）は仮のURLなので、本番用に<strong>LINE公式アカウント</strong>を作る必要がある。</p>
+<ol>
+  <li>LINE Official Account Manager（linebiz.com）にアクセスし、ビジネス用アカウントを作成（個人のLINEとは別物）</li>
+  <li>会社情報（業種：建設・リフォーム業など）を登録。法人確認が入る場合あり</li>
+  <li>プランは「フリープラン」（月1000通まで無料）から開始可能、配信数が増えたら有料プランへ</li>
+  <li>作成後に発行される「友だち追加URL」（<code>lin.ee/～</code>形式）を、LP内の3箇所（<code>index.html</code> 510行目・522行目・794行目あたり）の<code>https://lin.ee/XXXXXXX</code>と置き換える</li>
+  <li>リッチメニュー（下部の固定メニュー）を設定し、「写真を送る」「事例を見る」などのボタンを配置すると診断フローがスムーズになる</li>
+</ol>
+
+<h2>3. 自動応答機能は必要か</h2>
+<p><strong>はい、最低限の自動応答は強く推奨。</strong> 理由：</p>
+<ul>
+  <li>LPの導線が「友だち追加 → 写真を送る → 診断レポートを受け取る」という一定パターンの操作なので、自動化しやすい</li>
+  <li>友だち追加直後に挨拶メッセージ＋「お写真をお送りください」という案内を自動送信すれば、ユーザーが迷わず行動できる（これがないと登録してすぐ離脱されるリスクが高い）</li>
+  <li>営業時間外の問い合わせにも即座に「受け付けました、担当者から後ほど連絡します」と返せるので、取りこぼしが減る</li>
+  <li>全国対応で代理店40店舗以上とのことなので、地域別に振り分ける一次対応としても自動応答が有効</li>
+</ul>
+
+<h3>おすすめの設定レベル</h3>
+<ul>
+  <li>「あいさつメッセージ」：友だち追加時に自動送信（必須）</li>
+  <li>「キーワード応答」：「診断」「見積もり」等のキーワードに簡易応答（推奨）</li>
+  <li>写真受信時の自動返信（「受け取りました、担当より◯日以内にご連絡します」）（推奨）</li>
+  <li>完全AI対応の自動診断などは過剰なので不要。最終的な診断・見積もりは人（専門家）が行う前提で、一次受付・案内だけを自動化するのが適切</li>
+</ul>
+<p>これらはLINE Official Account Managerの「応答設定」「あいさつメッセージ」機能で無料プランのままノーコードで設定できる。</p>
+
+<div class="footer">蓮海工業株式会社 / エアー鉋LP プロジェクト用メモ</div>
+
+</body>
+</html>

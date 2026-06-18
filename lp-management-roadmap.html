@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LP公開・運用 手順表（役割分担つき）</title>
+<style>
+  body { font-family: "Yu Gothic", "Hiragino Sans", sans-serif; line-height: 1.8; color: #222; margin: 40px; }
+  h1 { font-size: 22px; border-bottom: 3px solid #1a2550; padding-bottom: 8px; }
+  h2 { font-size: 17px; color: #1a2550; margin-top: 28px; border-left: 6px solid #1a2550; padding-left: 10px; }
+  p, li { font-size: 13.5px; }
+  ol, ul { margin-left: 10px; }
+  .roles { display: flex; gap: 16px; margin: 16px 0; }
+  .role { flex: 1; padding: 12px 16px; border-radius: 6px; }
+  .role-you { background: #eef4ff; border: 1px solid #93c5fd; }
+  .role-kouhai { background: #eafaf0; border: 1px solid #86efac; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+  .tag-you { background: #93c5fd; color: #1a2550; }
+  .tag-kouhai { background: #86efac; color: #064e3b; }
+  code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+  .footer { margin-top: 40px; font-size: 11px; color: #888; }
+</style>
+</head>
+<body>
+
+<h1>エアー鉋LP 公開・運用 手順表</h1>
+<p>作成日：2026-06-18</p>
+
+<h2>役割分担</h2>
+<div class="roles">
+  <div class="role role-you">
+    <strong>あなた</strong><br>
+    ドメイン・サーバー・LPコード・広告アカウントの管理
+  </div>
+  <div class="role role-kouhai">
+    <strong>後輩の会社</strong><br>
+    LINE公式アカウントの開設・運用、顧客対応、施工写真/動画の提供
+  </div>
+</div>
+
+<h2>フェーズ1：後輩の会社にお願いすること <span class="tag tag-kouhai">後輩の会社</span></h2>
+<ol>
+  <li>LINE公式アカウントを会社名義で開設（LINE Official Account Manager）</li>
+  <li>発行された「友だち追加URL」（<code>lin.ee/～</code>）をあなたに共有</li>
+  <li>実際の施工写真・ビフォーアフター動画を提供（現在LPの該当箇所はすべて仮のCSS素材）</li>
+  <li>電話番号・正式社名・所在地など、会社概要セクションに載せる最終情報を確認</li>
+</ol>
+
+<h2>フェーズ2：公開前の準備 <span class="tag tag-you">あなた</span></h2>
+<ol>
+  <li>ドメイン取得・ホスティング契約</li>
+  <li>LP内のLINEボタン（index.html の510・522・561・740・794行目）を本番の<code>lin.ee</code>URLに差し替え</li>
+  <li><code>canonical</code> / <code>og:url</code> / <code>og:image</code> / <code>twitter:image</code>を本番URL・実画像に差し替え（現状すべて<code>example.com</code>の仮設定）</li>
+  <li>提供された実写動画・写真をLPに実装（動画src、Before/After画像）</li>
+  <li>Meta Pixel / Conversion APIを設置（広告効果計測のため）</li>
+  <li>JSON-LDに<code>telephone</code>・<code>image</code>・<code>sameAs</code>（SNSリンク）を追加</li>
+</ol>
+
+<h2>フェーズ3：公開 <span class="tag tag-you">あなた</span></h2>
+<ol>
+  <li>本番環境にデプロイし、PC・スマホ両方で表示確認</li>
+  <li>「LINE登録→写真送信→診断」の導線を実際に一度テストする</li>
+</ol>
+
+<h2>フェーズ4：広告準備・配信 <span class="tag tag-you">あなた</span></h2>
+<ol>
+  <li>Facebookページ作成・Instagramビジネスアカウント連携</li>
+  <li>Meta Business Suiteでビジネスアカウント開設</li>
+  <li>実写素材を使った広告クリエイティブ作成</li>
+  <li>ターゲティング・予算・配置を設定し審査提出</li>
+  <li>配信開始</li>
+</ol>
+
+<h2>フェーズ5：運用フェーズ</h2>
+<ul>
+  <li><span class="tag tag-kouhai">後輩の会社</span> LINEでの友だち対応・写真診断への返信（必要に応じて自動応答を設定）</li>
+  <li><span class="tag tag-you">あなた</span> 広告の効果モニタリング（Pixelデータ、CTR/CVR）、LPの微調整、定期報告</li>
+</ul>
+
+<div class="footer">蓮海工業株式会社 / エアー鉋LP プロジェクト用メモ</div>
+
+</body>
+</html>

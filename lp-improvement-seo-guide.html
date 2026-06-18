@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LP訴求力強化・SNS広告SEO設定ガイド</title>
+<style>
+  body { font-family: "Yu Gothic", "Hiragino Sans", sans-serif; line-height: 1.8; color: #222; margin: 40px; }
+  h1 { font-size: 22px; border-bottom: 3px solid #1a2550; padding-bottom: 8px; }
+  h2 { font-size: 18px; color: #1a2550; margin-top: 32px; border-left: 6px solid #1a2550; padding-left: 10px; }
+  h3 { font-size: 15px; margin-top: 20px; }
+  p, li { font-size: 13.5px; }
+  ol, ul { margin-left: 10px; }
+  .note { background: #fff7e6; border: 1px solid #ffd166; padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  .priority { background: #eef4ff; border: 1px solid #93c5fd; padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+  .footer { margin-top: 40px; font-size: 11px; color: #888; }
+</style>
+</head>
+<body>
+
+<h1>エアー鉋LP 訴求力強化・SNS広告SEO設定ガイド</h1>
+<p>作成日：2026-06-18</p>
+
+<h2>1. LPを「目に留まるもの」にするための工夫</h2>
+
+<div class="note">
+<strong>最大の課題：実写コンテンツが一切入っていない</strong><br>
+現状のLPの「ビフォーアフター」（index.html 224〜236行目、388〜392行目）はすべてCSSグラデーションで木目を模した仮の見た目。動画も（index.html 543行目）<code>&lt;!-- ← src="./videos/施工ビフォーアフター.mp4" を追加してください --&gt;</code>とコメントがあるだけで、実際の動画ファイルは未挿入。デザインとコピーの骨組みはできているが、最も訴求力が必要な実写素材がゼロの状態。
+</div>
+
+<h3>実写差し替え（最優先）</h3>
+<ul>
+  <li>実際のBefore/After写真・動画を入れる。木材再生は「目に見える変化」が価値そのものなので、文章より1枚の実写の方が何倍も説得力を持つ</li>
+  <li>施工事例カード（神社仏閣・古民家・ログハウスの3枚、index.html 710〜730行目付近）も今はCSSの色面のみ。実際の現場写真に差し替える</li>
+  <li>会社概要セクションのGoogleマップが「準備中」のまま。実際の地図に差し替えると信頼性が上がる</li>
+</ul>
+
+<h3>デザイン・構成面での追加の工夫</h3>
+<ul>
+  <li><strong>お客様の声・第三者評価がない</strong>：施主や寺院・古民家所有者からの推薦コメント、施工件数（「施工実績◯件」等の数字）を入れると社会的証明が強化される</li>
+  <li><strong>代理店40社の実在性を見せる</strong>：ロゴ一覧や地図上のピン表示があると「全国対応」の説得力が増す</li>
+  <li><strong>電話番号が見当たらない</strong>：LINE一本に絞る戦略は理解できるが、年配の神社仏閣関係者・古民家所有者は電話を好む層もいるため、補助的に電話番号を併記した方が離脱を防げる可能性がある</li>
+  <li>動画はLPだけでなくSNS広告素材としても使えるので、15〜30秒のショート版を別途切り出すと一石二鳥</li>
+</ul>
+
+<h2>2. SNS広告のためのSEO対策・その他設定</h2>
+<p>このLPはSNS広告の受け皿（ランディングページ）としての性質が強いので、検索SEOよりまず広告効果計測と信頼性メタ情報の整備が優先度高め。</p>
+
+<h3>今すぐ直すべき仮設定（本番公開前に必須）</h3>
+<ul>
+  <li><code>&lt;link rel="canonical" href="https://example.com/"&gt;</code>（8行目）→ 本番ドメインに差し替え</li>
+  <li><code>og:url</code>（14行目）も同様に本番URLへ</li>
+  <li><code>og:image</code>（15行目）が <code>https://example.com/ogp.jpg</code> のまま → SNSでシェア・広告表示される時のサムネイル画像（1200×630px推奨）を実際に用意してアップロードしないと、リンクシェア時に画像が表示されない</li>
+  <li><code>twitter:title</code> / <code>twitter:description</code> / <code>twitter:image</code> が未設定（<code>twitter:card</code>のみ）→ 追加推奨</li>
+</ul>
+
+<h3>構造化データ（JSON-LD）の強化</h3>
+<p>22〜39行目に<code>HomeAndConstructionBusiness</code>のスキーマが既にあるが、<code>telephone</code>、<code>image</code>、<code>sameAs</code>（Instagram/Facebook/LINEのURL一覧）を追加すると検索結果やナレッジパネルでの表示が強化される。</p>
+
+<h3>計測系</h3>
+<ul>
+  <li>Meta Pixel / Conversion APIの設置（広告効果測定。現状未設置）</li>
+  <li>LINEボタンのクリックをコンバージョンイベントとして計測</li>
+  <li>流入元ごとに効果を見たい場合はLINE URLに<code>?utm_source=instagram</code>等のUTMパラメータを付与</li>
+</ul>
+
+<h3>SNS広告特有でやっておくと良い設定</h3>
+<ul>
+  <li>Googleビジネスプロフィールの登録（地域性のあるサービスなので、広告経由で会社名検索した人への信頼補強になる）</li>
+  <li>Instagram/FacebookのプロフィールページにもLP・LINEリンクを設置</li>
+  <li>ハッシュタグ戦略（#古民家再生 #神社仏閣 #ログハウス など、ターゲット層が検索・閲覧する語）</li>
+  <li>LINE広告という選択肢もあり、Instagram/FB広告と並行して回すとLINE登録への導線がより直接的（同じLINEプラットフォーム内で完結するため）</li>
+</ul>
+
+<h3>通常SEO（検索エンジン経由の流入も狙う場合）</h3>
+<ul>
+  <li><code>sitemap.xml</code> / <code>robots.txt</code> は今のところ存在しない（単発LPなら必須ではないが、コーポレートサイトと合わせて運用するなら用意）</li>
+  <li>表示速度（Core Web Vitals）：動画を追加すると重くなるので、<code>preload="metadata"</code>や軽量フォーマット（WebM/H.264圧縮）を検討</li>
+  <li>現状画像（<code>&lt;img&gt;</code>タグ）が1つも使われていないため、実写を追加する際は<code>alt</code>属性を必ず付与（アクセシビリティ＋画像検索SEOの両方に有効）</li>
+</ul>
+
+<div class="priority">
+<strong>着手の優先順位：</strong><br>
+① 実写動画・写真の差し込み　→　② og:image/canonical等の本番値差し替え　→　③ Pixel設置　→　④ それ以外のSEO
+</div>
+
+<div class="footer">蓮海工業株式会社 / エアー鉋LP プロジェクト用メモ</div>
+
+</body>
+</html>
